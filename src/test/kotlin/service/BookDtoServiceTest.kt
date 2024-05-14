@@ -2,7 +2,7 @@ package service
 
 import com.bookstore.application.dao.BooksDao
 import com.bookstore.application.exceptions.BookNotFoundException
-import com.bookstore.application.model.books.BookDto
+import com.bookstore.application.dto.books.BookDto
 import com.bookstore.application.service.BookService
 import io.mockk.every
 import io.mockk.mockk

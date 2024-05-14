@@ -1,7 +1,7 @@
 package dao
 
 import com.bookstore.application.dao.BooksDao
-import com.bookstore.application.model.books.BookDto
+import com.bookstore.application.dto.books.BookDto
 import io.zonky.test.db.postgres.embedded.EmbeddedPostgres
 import org.flywaydb.core.Flyway
 import org.jdbi.v3.core.Jdbi

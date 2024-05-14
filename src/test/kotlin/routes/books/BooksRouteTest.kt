@@ -1,7 +1,7 @@
 package routes.books
 
 import com.bookstore.application.dao.BooksDao
-import com.bookstore.application.model.books.BookDto
+import com.bookstore.application.dto.books.BookDto
 import com.bookstore.application.routes.books.bookRoutes
 import com.bookstore.application.service.BookService
 import io.ktor.client.request.*

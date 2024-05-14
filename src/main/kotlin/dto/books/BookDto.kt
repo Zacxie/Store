@@ -1,4 +1,4 @@
-package com.bookstore.application.model.books
+package com.bookstore.application.dto.books
 
 import kotlinx.serialization.Serializable
 

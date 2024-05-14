@@ -1,7 +1,7 @@
 package routes.books
 
 import com.bookstore.application.dao.BooksDao
-import com.bookstore.application.model.books.Book
+import com.bookstore.application.model.books.BookDto
 import com.bookstore.application.routes.books.bookRoutes
 import com.bookstore.application.service.BookService
 import io.ktor.client.request.*
@@ -40,11 +40,11 @@ class BooksRouteTest {
 
     @Test
     fun `test get all books route`() = testApplication {
-        val expectedBooks = listOf(
-            Book(1, "SKU1984", 9.99, true, "1984", "George Orwell", 1949),
-            Book(2, "SKU1960", 12.99, false, "To Kill a Mockingbird", "Harper Lee", 1960)
+        val expectedBookDtos = listOf(
+            BookDto(1, "SKU1984", 9.99, true, "1984", "George Orwell", 1949),
+            BookDto(2, "SKU1960", 12.99, false, "To Kill a Mockingbird", "Harper Lee", 1960)
         )
-        every { booksDao.getAllBooks() } returns expectedBooks
+        every { booksDao.getAllBooks() } returns expectedBookDtos
 
         application {
             install(ContentNegotiation) {
@@ -60,7 +60,7 @@ class BooksRouteTest {
         }
 
         assertEquals(HttpStatusCode.OK, response.status)
-        assertEquals(Json.encodeToString(expectedBooks), response.bodyAsText())
+        assertEquals(Json.encodeToString(expectedBookDtos), response.bodyAsText())
 
         verify { booksDao.getAllBooks() }
     }
@@ -68,12 +68,12 @@ class BooksRouteTest {
     @ParameterizedTest
     @ValueSource(ints = [1, 2])
     fun `test get book by id route with valid id`(bookId: Int) = testApplication {
-        val expectedBooks = listOf(
-            Book(1, "SKU1984", 9.99, true, "1984", "George Orwell", 1949),
-            Book(2, "SKU1960", 12.99, false, "To Kill a Mockingbird", "Harper Lee", 1960)
+        val expectedBookDtos = listOf(
+            BookDto(1, "SKU1984", 9.99, true, "1984", "George Orwell", 1949),
+            BookDto(2, "SKU1960", 12.99, false, "To Kill a Mockingbird", "Harper Lee", 1960)
         )
 
-        val expectedBook = expectedBooks.first { it.id == bookId }
+        val expectedBook = expectedBookDtos.first { it.id == bookId }
         every { booksDao.getBookById(bookId) } returns expectedBook
 
         application {
@@ -123,12 +123,12 @@ class BooksRouteTest {
     @ParameterizedTest
     @ValueSource(strings = ["1984", "To Kill a Mockingbird"])
     fun `test get book by title route with valid title`(title: String) = testApplication {
-        val expectedBooks = listOf(
-            Book(1, "SKU1984", 9.99, true, "1984", "George Orwell", 1949),
-            Book(2, "SKU1960", 12.99, false, "To Kill a Mockingbird", "Harper Lee", 1960)
+        val expectedBookDtos = listOf(
+            BookDto(1, "SKU1984", 9.99, true, "1984", "George Orwell", 1949),
+            BookDto(2, "SKU1960", 12.99, false, "To Kill a Mockingbird", "Harper Lee", 1960)
         )
 
-        every { booksDao.getBookByTitle(title) } returns (expectedBooks)
+        every { booksDao.getBookByTitle(title) } returns (expectedBookDtos)
 
         application {
             install(ContentNegotiation) {
@@ -144,7 +144,7 @@ class BooksRouteTest {
         }
 
         assertEquals(HttpStatusCode.OK, response.status)
-        assertEquals(Json.encodeToString(expectedBooks), response.bodyAsText())
+        assertEquals(Json.encodeToString(expectedBookDtos), response.bodyAsText())
 
         verify { booksDao.getBookByTitle(title) }
     }

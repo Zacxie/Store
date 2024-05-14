@@ -1,7 +1,7 @@
 package com.bookstore.application.routes
 
 import com.bookstore.application.manager.ServiceManager
-import com.bookstore.application.model.healthcheck.HealthCheck
+import com.bookstore.application.model.healthcheck.HealthCheckDto
 import com.bookstore.application.routes.books.bookRoutes
 import io.ktor.server.application.*
 import io.ktor.server.response.*
@@ -14,14 +14,12 @@ fun Application.configureRouting(
     routing {
 
         get("/healthcheck") {
-            call.respond(HealthCheck("UP"))
+            call.respond(HealthCheckDto("UP"))
         }
 
         route("/api") {
             bookRoutes(services.bookService)
-
         }
-
 
     }
 }

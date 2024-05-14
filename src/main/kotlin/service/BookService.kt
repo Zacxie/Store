@@ -2,7 +2,7 @@ package com.bookstore.application.service
 
 import com.bookstore.application.dao.BooksDao
 import com.bookstore.application.exceptions.BookNotFoundException
-import com.bookstore.application.model.books.Book
+import com.bookstore.application.model.books.BookDto
 import org.jdbi.v3.core.Jdbi
 
 class BookService(
@@ -10,15 +10,15 @@ class BookService(
 ) {
     private val booksDao = jdbi.onDemand(BooksDao::class.java)
 
-    fun getAllBooks(): List<Book?> {
+    fun getAllBooks(): List<BookDto?> {
         return booksDao.getAllBooks()
     }
 
-    fun getBookById(id: Int): Book {
+    fun getBookById(id: Int): BookDto {
         return booksDao.getBookById(id) ?: throw BookNotFoundException("No book found with id $id")
     }
 
-    fun getBookByTitle(title: String): List<Book?> {
+    fun getBookByTitle(title: String): List<BookDto?> {
         return booksDao.getBookByTitle(title)
     }
 

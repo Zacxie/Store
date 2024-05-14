@@ -3,7 +3,7 @@ package com.bookstore.application.model.books
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class Book(
+data class BookDto(
     val id: Int,
     val sku: String,
     val price: Double,

@@ -1,7 +1,7 @@
 package dao
 
 import com.bookstore.application.dao.BooksDao
-import com.bookstore.application.model.books.Book
+import com.bookstore.application.model.books.BookDto
 import io.zonky.test.db.postgres.embedded.EmbeddedPostgres
 import org.flywaydb.core.Flyway
 import org.jdbi.v3.core.Jdbi
@@ -48,34 +48,34 @@ class BooksDaoTest {
 
     @Test
     fun `when getAllBooks is called, then a list of all books is returned`() {
-        val expectedBooks = listOf(
-            Book(1, "SKU1984", 9.99, true, "1984", "George Orwell", 1949),
-            Book(2, "SKU1960", 12.99, false, "To Kill a Mockingbird", "Harper Lee", 1960),
-            Book(3, "SKU1925", 10.99, true, "The Great Gatsby", "F. Scott Fitzgerald", 1925),
-            Book(4, "SKU1813", 8.99, false, "Pride and Prejudice", "Jane Austen", 1813),
-            Book(5, "SKU1961", 11.99, true, "Catch-22", "Joseph Heller", 1961)
+        val expectedBookDtos = listOf(
+            BookDto(1, "SKU1984", 9.99, true, "1984", "George Orwell", 1949),
+            BookDto(2, "SKU1960", 12.99, false, "To Kill a Mockingbird", "Harper Lee", 1960),
+            BookDto(3, "SKU1925", 10.99, true, "The Great Gatsby", "F. Scott Fitzgerald", 1925),
+            BookDto(4, "SKU1813", 8.99, false, "Pride and Prejudice", "Jane Austen", 1813),
+            BookDto(5, "SKU1961", 11.99, true, "Catch-22", "Joseph Heller", 1961)
         )
 
 
         val actualBooks = booksDao.getAllBooks()
 
         assertNotNull(actualBooks)
-        assertEquals(expectedBooks, actualBooks)
+        assertEquals(expectedBookDtos, actualBooks)
     }
 
     @ParameterizedTest
     @ValueSource(ints = [1, 2, 3, 4, 5])
     fun `when getBookById is called with a valid id, then the corresponding book is returned`(bookId: Int) {
-        val expectedBooks = listOf(
-            Book(1, "SKU1984", 9.99, true, "1984", "George Orwell", 1949),
-            Book(2, "SKU1960", 12.99, false, "To Kill a Mockingbird", "Harper Lee", 1960),
-            Book(3, "SKU1925", 10.99, true, "The Great Gatsby", "F. Scott Fitzgerald", 1925),
-            Book(4, "SKU1813", 8.99, false, "Pride and Prejudice", "Jane Austen", 1813),
-            Book(5, "SKU1961", 11.99, true, "Catch-22", "Joseph Heller", 1961)
+        val expectedBookDtos = listOf(
+            BookDto(1, "SKU1984", 9.99, true, "1984", "George Orwell", 1949),
+            BookDto(2, "SKU1960", 12.99, false, "To Kill a Mockingbird", "Harper Lee", 1960),
+            BookDto(3, "SKU1925", 10.99, true, "The Great Gatsby", "F. Scott Fitzgerald", 1925),
+            BookDto(4, "SKU1813", 8.99, false, "Pride and Prejudice", "Jane Austen", 1813),
+            BookDto(5, "SKU1961", 11.99, true, "Catch-22", "Joseph Heller", 1961)
         )
 
 
-        val expectedBook = expectedBooks.first { it.id == bookId }
+        val expectedBook = expectedBookDtos.first { it.id == bookId }
 
         val actualBook = booksDao.getBookById(bookId)
 
@@ -86,16 +86,16 @@ class BooksDaoTest {
     @ParameterizedTest
     @ValueSource(strings = ["1984", "To Kill a Mockingbird", "The Great Gatsby", "Pride and Prejudice", "Catch-22"])
     fun `when getBookByTitle is called with a valid title, then the corresponding book is returned`(title: String) {
-        val expectedBooks = listOf(
-            Book(1, "SKU1984", 9.99, true, "1984", "George Orwell", 1949),
-            Book(2, "SKU1960", 12.99, false, "To Kill a Mockingbird", "Harper Lee", 1960),
-            Book(3, "SKU1925", 10.99, true, "The Great Gatsby", "F. Scott Fitzgerald", 1925),
-            Book(4, "SKU1813", 8.99, false, "Pride and Prejudice", "Jane Austen", 1813),
-            Book(5, "SKU1961", 11.99, true, "Catch-22", "Joseph Heller", 1961)
+        val expectedBookDtos = listOf(
+            BookDto(1, "SKU1984", 9.99, true, "1984", "George Orwell", 1949),
+            BookDto(2, "SKU1960", 12.99, false, "To Kill a Mockingbird", "Harper Lee", 1960),
+            BookDto(3, "SKU1925", 10.99, true, "The Great Gatsby", "F. Scott Fitzgerald", 1925),
+            BookDto(4, "SKU1813", 8.99, false, "Pride and Prejudice", "Jane Austen", 1813),
+            BookDto(5, "SKU1961", 11.99, true, "Catch-22", "Joseph Heller", 1961)
         )
 
 
-        val expectedBook = expectedBooks.first { it.title == title }
+        val expectedBook = expectedBookDtos.first { it.title == title }
 
         val actualBook = booksDao.getBookByTitle(title)
 

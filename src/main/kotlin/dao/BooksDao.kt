@@ -1,6 +1,6 @@
 package com.bookstore.application.dao
 
-import com.bookstore.application.model.books.BookDto
+import com.bookstore.application.dto.books.BookDto
 import org.jdbi.v3.sqlobject.customizer.Bind
 import org.jdbi.v3.sqlobject.statement.SqlQuery
 

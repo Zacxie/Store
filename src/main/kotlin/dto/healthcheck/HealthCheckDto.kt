@@ -1,4 +1,4 @@
-package com.bookstore.application.model.healthcheck
+package com.bookstore.application.dto.healthcheck
 
 import kotlinx.serialization.Serializable
 

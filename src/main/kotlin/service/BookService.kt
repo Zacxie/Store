@@ -2,7 +2,7 @@ package com.bookstore.application.service
 
 import com.bookstore.application.dao.BooksDao
 import com.bookstore.application.exceptions.BookNotFoundException
-import com.bookstore.application.model.books.BookDto
+import com.bookstore.application.dto.books.BookDto
 import org.jdbi.v3.core.Jdbi
 
 class BookService(

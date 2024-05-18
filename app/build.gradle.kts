@@ -13,16 +13,18 @@ repositories {
 }
 
 dependencies {
+    implementation(project(":common"))
+
     implementation("io.ktor:ktor-server-core:2.3.11")
     implementation("io.ktor:ktor-server-netty:2.3.11")
     implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.11")
-    implementation("org.postgresql:postgresql:42.7.3")
     implementation("io.ktor:ktor-server-content-negotiation:2.3.11")
-    implementation("org.flywaydb:flyway-core:7.7.3")
+    implementation("org.postgresql:postgresql:42.7.3")
     implementation("org.jdbi:jdbi3-core:3.23.0")
     implementation("org.jdbi:jdbi3-sqlobject:3.23.0")
     implementation("org.jdbi:jdbi3-kotlin:3.23.0")
     implementation("com.zaxxer:HikariCP:4.0.3")
+    implementation("ch.qos.logback:logback-classic:1.4.12")
 
     testImplementation("io.ktor:ktor-server-tests:2.3.11")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")

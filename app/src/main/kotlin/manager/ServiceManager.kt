@@ -1,7 +1,7 @@
 package com.bookstore.application.manager
 
-import com.bookstore.application.db.getJdbi
 import com.bookstore.application.service.BookService
+import db.getJdbi
 
 class ServiceManager {
     private val jdbi = getJdbi()

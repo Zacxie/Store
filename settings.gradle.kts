@@ -3,3 +3,5 @@ plugins {
 }
 rootProject.name = "Store"
 
+include(":app")
+include("common")

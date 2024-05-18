@@ -1,8 +1,8 @@
 package com.bookstore.application.config
 
-import com.bookstore.application.db.migrateDatabase
 import com.bookstore.application.manager.ServiceManager
 import com.bookstore.application.routes.configureRouting
+import db.migrateDatabase
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.plugins.contentnegotiation.*

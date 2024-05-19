@@ -1,20 +1,19 @@
 plugins {
-    kotlin("jvm") version "1.9.23"
+    kotlin("jvm") version libs.versions.kotlin.jvm.get()
 }
 
-group = "com.tr0xy"
-version = "unspecified"
+group = "com.bookstore"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation("org.jdbi:jdbi3-core:3.23.0")
-    implementation("org.jdbi:jdbi3-sqlobject:3.23.0")
-    implementation("org.jdbi:jdbi3-kotlin:3.23.0")
-    implementation("com.zaxxer:HikariCP:4.0.3")
-    implementation("org.flywaydb:flyway-database-postgresql:10.13.0")
+    implementation("org.jdbi:jdbi3-core:${libs.versions.jdbi.get()}")
+    implementation("org.jdbi:jdbi3-sqlobject:${libs.versions.jdbi.get()}")
+    implementation("org.jdbi:jdbi3-kotlin:${libs.versions.jdbi.get()}")
+    implementation("com.zaxxer:HikariCP:${libs.versions.hikaricp.get()}")
+    implementation("org.flywaydb:flyway-database-postgresql:${libs.versions.flyway.get()}")
 }
 
 tasks.test {

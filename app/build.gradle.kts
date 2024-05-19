@@ -1,7 +1,7 @@
 plugins {
-    kotlin("jvm") version "1.9.23"
-    kotlin("plugin.serialization") version "1.9.23"
-    id("com.github.johnrengelman.shadow") version "7.1.2"
+    kotlin("jvm") version libs.versions.kotlin.jvm.get()
+    kotlin("plugin.serialization") version libs.versions.kotlin.serialization.get()
+    id("com.github.johnrengelman.shadow") version libs.versions.shadow.get()
     application
 }
 
@@ -15,24 +15,24 @@ repositories {
 dependencies {
     implementation(project(":common"))
 
-    implementation("io.ktor:ktor-server-core:2.3.11")
-    implementation("io.ktor:ktor-server-netty:2.3.11")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.11")
-    implementation("io.ktor:ktor-server-content-negotiation:2.3.11")
-    implementation("org.postgresql:postgresql:42.7.3")
-    implementation("org.jdbi:jdbi3-core:3.23.0")
-    implementation("org.jdbi:jdbi3-sqlobject:3.23.0")
-    implementation("org.jdbi:jdbi3-kotlin:3.23.0")
-    implementation("com.zaxxer:HikariCP:4.0.3")
-    implementation("ch.qos.logback:logback-classic:1.4.12")
+    implementation("io.ktor:ktor-server-core:${libs.versions.ktor.get()}")
+    implementation("io.ktor:ktor-server-netty:${libs.versions.ktor.get()}")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:${libs.versions.ktor.get()}")
+    implementation("io.ktor:ktor-server-content-negotiation:${libs.versions.ktor.get()}")
+    implementation("org.postgresql:postgresql:${libs.versions.postgresql.get()}")
+    implementation("org.jdbi:jdbi3-core:${libs.versions.jdbi.get()}")
+    implementation("org.jdbi:jdbi3-sqlobject:${libs.versions.jdbi.get()}")
+    implementation("org.jdbi:jdbi3-kotlin:${libs.versions.jdbi.get()}")
+    implementation("com.zaxxer:HikariCP:${libs.versions.hikaricp.get()}")
+    implementation("ch.qos.logback:logback-classic:${libs.versions.logback.get()}")
 
-    testImplementation("io.ktor:ktor-server-tests:2.3.11")
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
-    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.8.1")
-    testImplementation("org.junit.jupiter:junit-jupiter-params:5.8.1")
-    testImplementation("io.mockk:mockk:1.12.0")
-    testImplementation("io.ktor:ktor-client-content-negotiation:2.0.0")
-    testImplementation("io.zonky.test:embedded-postgres:1.3.1")
+    testImplementation("io.ktor:ktor-server-tests:${libs.versions.ktor.get()}")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:${libs.versions.junit.get()}")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:${libs.versions.junit.get()}")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:${libs.versions.junit.get()}")
+    testImplementation("io.mockk:mockk:${libs.versions.mockk.get()}")
+    testImplementation("io.ktor:ktor-client-content-negotiation:${libs.versions.ktor.get()}")
+    testImplementation("io.zonky.test:embedded-postgres:${libs.versions.embedded.postgres.get()}")
 
 }
 

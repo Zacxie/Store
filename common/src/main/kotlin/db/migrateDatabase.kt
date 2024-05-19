@@ -1,4 +1,4 @@
-package com.bookstore.application.db
+package db
 
 import org.flywaydb.core.Flyway
 

@@ -32,7 +32,6 @@ class BooksDaoTest {
             .dataSource(jdbcUrl, "postgres", "postgres")
             .load()
 
-        flyway.clean()
         flyway.migrate()
 
         jdbi = Jdbi.create(jdbcUrl, "postgres", "postgres")

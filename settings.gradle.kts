@@ -21,6 +21,7 @@ dependencyResolutionManagement {
             version("kotlin-jvm", "1.9.23")
             version("kotlin-serialization", "1.9.23")
             version("shadow", "7.1.2")
+            version("kotlinx-html", "0.9.1")
         }
     }
 }
